@@ -2,10 +2,6 @@
 
 All directories are relative to the `<installation_dir>/screensaver` directory.
 
-## Database
-
-Create a new PostgreSQL user and database instance using the [createuser](https://www.postgresql.org/docs/9.6/app-createuser.html) and [createdb](https://www.postgresql.org/docs/9.6/app-createdb.html) commands.
-
 ## Django installation
 
 The Django server installation uses the `lims` directory as the default application location.
@@ -34,41 +30,20 @@ Copy `lims/settings-example-production.py` to `lims/settings.py` and adjust valu
 * Update the reference `from .app_data-facility-example import APP_PUBLIC_DATA `
 * Update `DATABASES` to specify the database connection parameters
   * see [Django database setup](https://docs.djangoproject.com/en/3.1/intro/tutorial02/#database-setup) for more information.
-* set the `AUTHENTICATION_BACKENDS` to a authentication module for your installation.
-* set the `STATIC_ROOT` to the location where static files will be served from (this is the "docroot" of the application).
-* set a `SECRET_KEY`
+* Add a [custom authentication backend](https://docs.djangoproject.com/en/3.1/topics/auth/customizing/) to`AUTHENTICATION_BACKENDS` if you will require features not provided by the Django authentication in the database.
+  * TODO: generic authentication backend instructions
+* Set the `STATIC_ROOT` to the location where static files will be served from (this is the "docroot" of the application).
+* Set a `SECRET_KEY`
+* Logging configuration: note that output log file locations should be accessible from all webserver instances.
+* Set the `TEMP_FILE_DIR` to a directory location for temporary files created during download operations; this directory should be visible to all server instances.
+* Set the `WELL_STRUCTURE_IMAGE_DIR` to serve compound images; this directory must be visible from all webserver instances.
 * Configure background processing settings:
   * Background processing is off by default
-```
-BACKGROUND_PROCESSING = True
-APP_PUBLIC_DATA.BACKGROUND_PROCESSING = BACKGROUND_PROCESSING
-
-BACKGROUND_PROCESSOR = {
-    SCHEMA.SETTINGS.BACKGROUND.POST_DATA_DIR: os.path.join(
-        PROJECT_ROOT, "..", "logs", "background", "post_data"
-    ),
-    SCHEMA.SETTINGS.BACKGROUND.JOB_OUTPUT_DIR: os.path.join(
-        PROJECT_ROOT, "..", "logs", "background", "job_output"
-    ),
-    SCHEMA.SETTINGS.BACKGROUND.RESPONSE_DATA_DIR: os.path.join(
-        PROJECT_ROOT, "..", "logs", "background", "response_data"),
-    SCHEMA.SETTINGS.BACKGROUND.RESPONSE_DATA_DIR_MAX_BYTES: (2**30)*1, # 1GB
-    SCHEMA.SETTINGS.BACKGROUND.MAX_JOBS_PER_PERSON: 3,
-    "credential_file": os.path.join(
-        PROJECT_ROOT, "..", "production_data", "credentials.txt"
-    ),
-    "python_environ_script": os.path.join(PROJECT_ROOT, 'scripts', "run_webconf_consolelogs.sh"),
-    "background_process_script": "reports.utils.background_client_util",
-    }
-```
-  * see the background processing discussion for more details
-* Logging configuration: note that output log file locations should be accessible from all webserver instances.
-* set the `TEMP_FILE_DIR` to a directory location for temporary files created during download operations; this directory should be visible to all server instances.
-* set the `WELL_STRUCTURE_IMAGE_DIR` to serve compound images; this directory must be visible from all webserver instances.
+  * See [Background Processing](reference#request-background-processing)
 
 ## Initialize the database
 
-The Django [migrate](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-migrate) command will initialized the database:
+The Django [migrate](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-migrate) command will initialized the database (create the tables specified in models.py):
 ``` bash
 ./manage.py migrate
 ```
@@ -83,4 +58,15 @@ At least one super-user account must be set up to administer the system.
 ./manage.py createsuperuser
 ```
 * see [Django docs: Getting started: Creating an admin user](https://docs.djangoproject.com/en/3.1/intro/tutorial02/#creating-an-admin-user) for more details.
+
+## Set up Authorization
+
+- **Read** permissions for a Resource allow GET operations
+- **Write** permissions for a Resource all PUT, POST, PATCH, and DELETE operations (where implemented, and as allowed by Resource specific constraints). These API permissions are also represented in the corresponding capabilities in the Web application. For instance, write permission is required create or edit a user, library, screen, etc.
+
+All Resources require an Authorization implementation assignment, see [reports.api.api_base.Authorization](https://github.com/hmsiccbl/screensaver/blob/master/reports/api/api_base.py) for details.
+
+By default, Screensaver is set up to use the User and Group permission system to authorize staff users, and other, resource-specific permission implementations for screener user permissions.
+* See [ICCB-L Data Sharing Rules](reference#iccb-l-screener-data-sharing-rules)
+* See [ICCBL Authorization implementation](reference#iccbl-authorization-implementation)
 

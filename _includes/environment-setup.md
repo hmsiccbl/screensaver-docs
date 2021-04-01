@@ -2,7 +2,7 @@
 
 ## Install Python using Conda
 
-Python should be installed using a separate environment. The [Miniconda](https://docs.conda.io/en/latest/miniconda.html) version of the Conda package managment system is recommended.
+Python 3.8 should be installed using a separate environment. The [Miniconda](https://docs.conda.io/en/latest/miniconda.html) version of the Conda package managment system is recommended.
 
 Once Miniconda is installed, create a separate "screensaver" environment
 
@@ -10,25 +10,27 @@ Once Miniconda is installed, create a separate "screensaver" environment
 conda create -p <installation_dir>/miniconda/screensaver python=3.8
 
 # activate the environment
-conda activate <installation_dir>/miniconda/screensaver
+conda activate <base directory>/miniconda/screensaver
 ```
 
-## Download Screensaver
+## Install PostgresSql 9.6
 
-Clone the screensaver repository to the `<installation_dir>/screensaver` directory
-``` bash
-cd <installation_dir>
-git clone git@github.com:hmsiccbl/screensaver.git
-```
+Create a new PostgreSQL user and database instance using the [createuser](https://www.postgresql.org/docs/9.6/app-createuser.html) and [createdb](https://www.postgresql.org/docs/9.6/app-createdb.html) commands.
+
+
+
+## Download the Screensaver source code
+
+[github.com/hmsiccbl/screensaver](https://github.com/hmsiccbl/screensaver)
+
 
 ## Install dependencies
 
 Activate the python environment and install the dependencies specified in the requirements.txt file.
 
 ``` bash
-cd <installation_dir>
 conda activate miniconda/screensaver
-cd screensaver
+cd <installation_dir>
 pip install -r requirements.txt
 ```
 

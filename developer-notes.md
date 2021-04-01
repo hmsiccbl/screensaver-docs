@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Development
-nav_order: 5
+nav_order: 6
 ---
 # Developer notes
 {: .no_toc }
@@ -10,4 +10,5 @@ nav_order: 5
 {:toc}
 ---
 {% include testing.md %}
+{% include code-of-conduct.md %}
 

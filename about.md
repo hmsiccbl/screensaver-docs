@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-permalink: /about/
+permalink: about
 nav_order: 1
 ---
 # Screensaver HTS LIMS
@@ -18,6 +18,7 @@ Screensaver supports the storage and comparison of screening data sets, as well 
 
 [Screensaver Feedback](mailto:screensaver-feedback@hms.harvard.edu)
 
+### Publications
 Tolopko AN, Sullivan JP, Erickson SD, Wrobel D, Chiang SL, Rudnicki K, Rudnicki S, Nale J, Selfors LM, Greenhouse D, Muhlich JL, Shamu CE. [Screensaver: an open source lab information management system (LIMS) for high throughput screening facilities](https://iccb.med.harvard.edu/publications/screensaver-open-source-lab-information-management-system-lims-high-throughput). BMC Bioinformatics 2010;11:260.
 
 
