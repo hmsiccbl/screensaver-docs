@@ -1,7 +1,7 @@
 title: Screensaver Documentation 
 email: sean_erickson@hms.harvard.edu
 description: "Screensaver HTS LIMS: Open source software for high throughput screening"
-baseurl: "screensaver-docs" 
+baseurl: "/screensaver-docs" 
 url: "https://hmsiccbl.github.io"
 
 aux_links:
