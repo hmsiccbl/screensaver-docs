@@ -12,7 +12,7 @@ has_children: true
 {:toc}
 ---
 
-## Users
+## User Management
 
 Use the "Add user" button on the bottom of the left panel to add a new user account to the system.
 
@@ -45,7 +45,7 @@ In order to be able to log in, the new user account must be assigned a User ID.
 
 For screener accounts created on systems using the ICCB-L authorization implementations, a data sharing level must be assigned to these accounts after creation in order for the account to be "active" (allowing log in).
 
-## Libraries
+## Library Management
 
 * A **library** defines the plate formats and identities of the reagents of a collection,
 * a **library copy** tracks the physical plates created with reagent stock.
@@ -58,9 +58,7 @@ In a high throughput screening facility, it is useful to have multiple copies of
 * a "master stock plates" copy may be created at a higher concentration and used to generate other copies,
 * one or more "library screening" copies may be created for use in generating assay plates for primary screening,
 * "cherry pick screening" copies may be created for use in generating custom plates for follow up screening.
-In this way, the facility can minimize loss from freeze/thaw cycles when plates are removed from storage for screening; and also, screening plates may be repurposed as cherry pick plates to maximize depletion of specific reagents.
-
-When screens are conducted at the facility, the plates of one or more library copies are used to produce the assay plates used for screening. The usage of library copy plates is tracked in Screensaver by adding new "Library Screening" activities. Each library screening activity tracks the set of library copy plates that have been used, along with the volume of reagent that was taken from each library copy well and the number of assay plate replicates that were produced. In this way, the Screensaver database can be used calculate the number of times each copy has been used as well as the total consumed and remaining reagent volume of every library copy plate. 
+In this way, the facility can minimize loss from freeze/thaw cycles when plates are removed from storage for screening; and also, screening plates may be repurposed as cherry pick plates to maximize usage and depletion of specific reagents.
 
 ### Create a new library
 
@@ -89,24 +87,61 @@ Structure images may be associated with each of the wells of the library.
     * For example, a PNG image for the small molecule in Plate `1005`, Well `G15` would be named `01005G15.png`. 
 * Place the image files in a file system directory structure, partitioning the image files into subdirectories named by plate number (5 digits, left-padded with zeros). 
 
-## Screens
+## Screen and Study Management
 
-A screen tracks the progress of performing a screening assay, including a description of its biological significance, its experimental protocol, and additional data to support the administrative needs of the facility. After screening data is generated, a screen will contain a screen result. 
+A screen tracks the progress of performing a screening assay, including a description of its biological significance, its experimental protocol, and additional data to support the administrative needs of the facility. After screening data is generated, this data may uploaded and associated with the screen record.
 
+A study is similar to a screen, except that the reagents and the data associated with the study are based on publications or other research data and not on a screening assay performed at the facility. 
 
 ### Create a new screen
 
-To create a screen, us the "Add screen" button on the bottom of the left panel.
+To create a screen, use the "Add screen" button on the bottom of the left panel.
 
-### Choosing the screen data sharing level
+### Record a library screening visit
 
-### Create a Library screening visit
+When screens are conducted at the facility, the plates of one or more library copies are used to produce the assay plates used for screening. The usage of library copy plates is tracked in Screensaver by adding new "Library Screening" activities. Each library screening activity tracks the set of library copy plates that have been used, along with the volume of reagent that was taken from each library copy well and the number of assay plate replicates that were produced. In this way, the Screensaver database can be used calculate the number of times each copy has been used as well as the total consumed and remaining reagent volume of every library copy plate. 
+
+To add a new library screening visit, go to the "Activities" tab of the Screen, and use the "Add library screening visit" button.
+
+see [Library screening visit](library-screening.html)
+
+### Recording service activities
+
+**Service Activities** record the different tasks that staff will perform when administering a HTS screening assay. 
+
+To add a new service activity, go to the "Activities" tab of the Screen, and use the "Add library service activity" button.
 
 ### Upload screen results
 
+After the screening assay has been performed, the results of this assay may be formatted and uploaded to the Screensaver database.
+
 See [Screen Result File Format](screenresult-file-format.html)
 
-### Create a cherry pick request
+### Raw data transformation
+
+Screening assay result data are detected by different **plate reader** devices. These devices may produce the **raw data** results in different formats including text or CSV.
+
+The **Raw Data Transformer** utility in Screensaver may be used to parse these raw data results, and to collate read-out types, replicates and conditions that are measured, and to associate these collated results with plate and well data from the screensaver database. The Raw Data Transformer output can then be entered into the [Screen Result File Format](screenresult-file-format.html).
+
+see [Raw Data Transformer](raw-data-transformer.html)
+
+### Recording "cherry pick" or "follow-up" reagent requests 
+
+When anaylizing the screen results for an experimental assay, specific reagents may be identified as significant and selected for follow-up assays. "Cherry picking" is term used for this selection process.
+
+To create a "cherry pick request", select the "Cherry picks" tab on the screen page, and then use the "add" button.
+
+For details on the cherry pick request process, see [Cherry Pick Request](cherry-pick-request.html)
 
 ### Create a study (in-silco screen)
 
+A **Study** is similar to a **Screen** in that it is used to associate data with reagents in the Screensaver libraries. Therefore, the study data are formatted in an identical manner to the Screen result data and are uploaded in the same way.
+
+See [Screen Result File Format](screenresult-file-format.html) for more details on this process.
+
+
+## Search Utilities
+
+The left hand panel shows different search entry boxes that may be used to locate plated reagents, aliquoted compounds (tubes), library copy plates, and cherry pick requests.
+
+see [Search Utiilties](search-utilities.html) for more information.
