@@ -82,6 +82,12 @@ To upload library well definitions, use the "Upload" button on the library detai
 
 See [Library File Formats](library-file-formats.html)
 
+&&&&&To upload library well definitions and content information, use the "Upload" button on the library details tab.The upload format can be as an SD file if small molecule structure information (mol file) is to be included; otherwise content can be uploaded using an Excel file (.xlsx). Comments can be added during the upload to include information regarding the loading session. For all wells to be uploaded, required fields are plate_number, well_name, library_well_type (experimental, dmso, empty, library_control), and either molar_concentration (where 0.01 = 10mM) or mg_ml_concentration. Concentration values are only permitted for wells with library_well_type = "experimental". 
+
+After selecting the "Upload" button and setting the file to be used for upload, there is an option to set undefined library wells to "empty". If not selected all wells that have not been defined will remain in that state. If checked, all wells in the library that are not defined in the upload file will be set as empty. Attempts to load content for these wells will subsequently fail so only use this option if certain that the well type will not need to be changed. Updating of library well type is not possible using the UI or through data file upload. 
+
+To add data for new records or existing records, select "Add columns" in the well view and check the desired columns to include. Download a file (using "Download for data interchange") to determine the correct column headers (if not known). Data can then be uploaded from the library details view. For existing records, plate_number and well_name (or just well_id) are necessary to link the data to the appropriate wells. Note that for any fields left blank in the loading file, the result will be null values in the corresponding well records. Any columns that are not being used in the loading file should thus be removed, unless the intent is to remove values in that column for all wells in the loading file.&&&&&
+
 ### Create a library copy
 
 To create a library copy, go to the "Copies" tab of a library and use the "Add" button.
