@@ -35,7 +35,11 @@ Copy `lims/settings-example-production.py` to `lims/settings.py` and adjust valu
 * Set the `STATIC_ROOT` to the location where static files will be served from (this is the "docroot" of the application).
 * Set a `SECRET_KEY`
 * Logging configuration: note that output log file locations should be accessible from all webserver instances.
-* Set the `TEMP_FILE_DIR` to a directory location for temporary files created during download operations; this directory should be visible to all server instances.
+* `TEMP_FILE_DIR`: 
+  * directory location for temporary files created during download operations; this directory should be visible to all server instances.
+  * Note: temporary files are created to minimize runtime memory requirements for file downloads, and in some cases to enable asynchronous downloads. In cases where these files can not be removed immediately on completion of streaming to the HTTP socket; these files are periodically purged; see reports.api.base._clear_old_files for details.
+  * `TEMP_FILE_DIR_MAX_BYTES` is set to 2GB by default
+
 * Set the `WELL_STRUCTURE_IMAGE_DIR` to serve compound images; this directory must be visible from all webserver instances.
 * Configure background processing settings:
   * Background processing is off by default

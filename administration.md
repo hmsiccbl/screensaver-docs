@@ -87,6 +87,11 @@ Structure images may be associated with each of the wells of the library.
     * For example, a PNG image for the small molecule in Plate `1005`, Well `G15` would be named `01005G15.png`. 
 * Place the image files in a file system directory structure, partitioning the image files into subdirectories named by plate number (5 digits, left-padded with zeros). 
 
+## Aliquotted compound collections
+
+In addition to the plated library collections, Screensaver also manages aliquotted compound collections. These are reagents stored in tubes.
+
+
 ## Screen and Study Management
 
 A screen tracks the progress of performing a screening assay, including a description of its biological significance, its experimental protocol, and additional data to support the administrative needs of the facility. After screening data is generated, this data may uploaded and associated with the screen record.
@@ -99,7 +104,7 @@ To create a screen, use the "Add screen" button on the bottom of the left panel.
 
 ### Record a library screening visit
 
-When screens are conducted at the facility, the plates of one or more library copies are used to produce the assay plates used for screening. The usage of library copy plates is tracked in Screensaver by adding new "Library Screening" activities. Each library screening activity tracks the set of library copy plates that have been used, along with the volume of reagent that was taken from each library copy well and the number of assay plate replicates that were produced. In this way, the Screensaver database can be used calculate the number of times each copy has been used as well as the total consumed and remaining reagent volume of every library copy plate. 
+When screens are conducted at the facility, the plates of one or more library copies are used to produce the assay plates used for screening. The usage of library copy plates is tracked in Screensaver by adding a new **Library Screening activity**. Each library screening activity tracks the set of library copy plates that have been used, along with the volume of reagent that was taken from each library copy well and the number of assay plate replicates that were produced. In this way, the Screensaver database can be used calculate the number of times each copy has been used as well as the total consumed and remaining reagent volume of every library copy plate. 
 
 To add a new library screening visit, go to the "Activities" tab of the Screen, and use the "Add library screening visit" button.
 
@@ -123,7 +128,7 @@ Screening assay result data are detected by different **plate reader** devices. 
 
 The **Raw Data Transformer** utility in Screensaver may be used to parse these raw data results, and to collate read-out types, replicates and conditions that are measured, and to associate these collated results with plate and well data from the screensaver database. The Raw Data Transformer output can then be entered into the [Screen Result File Format](screenresult-file-format.html).
 
-see [Raw Data Transformer](raw-data-transformer.html)
+see [Raw Data Transformer](raw-data-transformer.html) for details.
 
 ### Recording "cherry pick" or "follow-up" reagent requests 
 

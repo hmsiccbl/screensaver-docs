@@ -4,10 +4,31 @@ title: Screen Result File Format
 nav_order: 5
 parent: Administration
 ---
+{: .no_toc }
+
+1. TOC
+{:toc}
+---
 
 # Screen Result File Format
 
+The Screensaver API supports the upload of experiment result data formatted in Excel workbooks.
 
+A single screen result identifies one data point that is identified by the **data column** of the measurement and the **plate and well ID** of the assay well from which the data point was measured.
+
+The screen result workbook consists of two types of sheets:
+
+* **data_column** contains the definitions of the measurement data colums that will be uploaded.
+   * data_column.assay_data_type defines the type of input data that may be entered
+   * data_column.assay_readout_type identifies the type of readout of the measurement
+* **data** contains the result data identified by the plate and well ID and the data column names.
+  * data may be entered in multiple sheets
+
+## Generating a template screen result file
+
+The Screensaver API will generate a "screen result template" file that is a valid screen result file that may be used as a template to create a new screen result file for upload.
+* Mock data columns for each type of assay_data_type that can be recorded.
+* Mock data for each of the mock columns.
 
 There are two types of sheets in a screen result data file:
 
