@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Raw Data Transformer
-nav_order: 6
-parent: Administration
+nav_order: 13
+parent: Screen Management
+grand_parent: Administration
 ---
 {: .no_toc }
 
@@ -29,17 +30,17 @@ The Transform Raw Data Tab exists for each Screen on the Screening summary Tab.
 ## Input fields
 The following fields are used to transform a raw data file into an ICCB-L formatted file:
 
-* Plate Ranges - these are the library plate ids. They can be named one at a time (1701, 1702, 1703, etc) or in a range of ascending or descending plates (ie 1701-1703 or 1703-1701). The range also accommodate multiple ranges of plates separated by commas in the order you specify for example 2089-2090, 1701, 3260-3263, 1702
-* Output Filename - automatically generated based on the Screen ID and the plate range. Format: “ScreenID_Plate Ranges” 
-* Output Format - Choice of one library plate in one worksheet within the same workbook or all the plates combined into one worksheet.
-* Assay Plate Size - Choice of 1, 96, 384, 1536 well plates
-* Assay Positive, Negative, Other Controls- Adds the designation “P”, “N”, or “O” in the Type column of the ICCB-L formatted file to wells the user indicates. 
+* **Plate Ranges** - these are the library plate ids. They can be named one at a time (1701, 1702, 1703, etc) or in a range of ascending or descending plates (ie 1701-1703 or 1703-1701). The range also accommodate multiple ranges of plates separated by commas in the order you specify for example 2089-2090, 1701, 3260-3263, 1702
+* **Output Filename** - automatically generated based on the Screen ID and the plate range. Format: “ScreenID_Plate Ranges” 
+* **Output Format** - Choice of one library plate in one worksheet within the same workbook or all the plates combined into one worksheet.
+* **Assay Plate Size** - Choice of 1, 96, 384, 1536 well plates
+* **Assay Positive, Negative, Other Controls** - Adds the designation “P”, “N”, or “O” in the Type column of the ICCB-L formatted file to wells the user indicates. 
   * These wells can be written in manually A24, B24, etc in ranges A24-H24, or by column 23. A label can also be specified using the Well= “Label” format.
   * User can also use the Select Tab to choose wells by clicking on the wells in a plate format. Click the + on the left side, enter a label if desired, then manually click on the wells, click OK. The controls designation box is filled in for you. 
   * Labels appear for each well under the Pre-Loaded controls column in the ICCB-L formatted file.  
-* Library Plate size - Plate as defined in Screensaver 1, 96, 384, 1536
-* Library Controls - TODO: define this function
-* Comments - For record keeping only - will not affect the ouput
+* **Library Plate size** - Plate as defined in Screensaver 1, 96, 384, 1536
+* **Library Controls** - TODO: define this function
+* **Comments** - For record keeping only - will not affect the ouput
 
 ## Input Files
 

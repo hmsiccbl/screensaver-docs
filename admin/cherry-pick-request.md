@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Cherry Pick Requests
-nav_order: 6
-parent: Administration
+nav_order: 13
+parent: Screen Management
+grand_parent: Administration
 ---
 {: .no_toc }
 

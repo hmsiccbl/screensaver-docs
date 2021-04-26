@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Search Utilities
-nav_order: 6
+nav_order: 15
 parent: Administration
 ---
 {: .no_toc }
