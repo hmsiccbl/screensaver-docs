@@ -161,7 +161,7 @@ API Resources by name:
 
 ## DB application
 
-Located at `http://<server_url>/db/api/v1`
+Located at `http://<server_url>/db/api/v1/<resource_name>`
 
 API Resources by name:
 * `screen`: HTS screening project.

@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Library Screening Visit
-nav_order: 6
-parent: Administration
+nav_order: 12
+parent: Screen Management
+grand_parent: Administration
 ---
 {: .no_toc }
 

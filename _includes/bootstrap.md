@@ -11,7 +11,7 @@ Additionally, User, Usergroup, and Permission **application data** are required 
   * `db/static/api_init/`
 * These default metadata files must be loaded into the database for the Screensaver application to access. 
 * For convenience, the `db_init.py` script is provided with the `api_init_actions.csv` specification file. Using this process, all of the resource, field and vocabulary definitions for a server may be loaded with one command.
-* Individual metadata files may be loaded separately, see [Usage](usage) for more information.
+* Individual metadata files may be loaded separately, see [Usage](api-usage) for more information.
 * These server initialization commands will **fully reset all of the metadata for the installation**, so care should be taken to ensure that all server metadata has been saved prior to executing.
 * These server initialization commands are idempotent, this process may be run repeatedly to fully reinitialize the server metadata.
 * For convenience, the metadata for the `reports` sub-application is contained separately from the metadata for the `db` sub-application.
