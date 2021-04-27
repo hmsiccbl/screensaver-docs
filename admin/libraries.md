@@ -35,13 +35,27 @@ In this way, the facility can minimize loss from freeze/thaw cycles when plates 
 
 ## Creating a new library
 
-To create a new library, use the "Add library" button on the bottom of the left panel. When creating a new library, define the plate type, and the number of plates that will be used in the library. On creation, the system initialize each well of the created plates with the "undefined" placeholder. After the library has been created, well definitions can be uploaded.
+To create a new library, use the "Add library" button on the bottom of the left panel. When creating the library, select from the defined drop-down lists for "Screen Type", "Plate Size", "Solvent", and "Screening Status". "Short Name" and "Library Name" accept free-form text values and must be unique, with the short name library value displayed by default when vieiwng the list of libraries. Both cannot be edited from the UI after library creation. "Provider" is the name of the vendor or other source. Since this is not a defined value, if used in other libraries an attempt should be made to match the name with previous entries.
+
+Select "Pool" if wells contain more than one reagent.
+
+"Start Plate" and "End Plate" must be unique values and should reflect the expected number of plates in the library. If only one plate then both start and end plate should be entered as the same value. Once set, start and end plate cannot be edited from within the UI.
+
+"Description" is not a required field and accepts any desired text that provides additional information about the library.
+
+After selecting "Save", optional admin comments can be added. These are visible only to users with admin privileges.
+
+On creation, the system initializes each well of the created plates with the "undefined" placeholder. After the library has been created, well definitions can be uploaded.
 
 ## Upload library well definitions
 
-To upload library well definitions, use the "Upload" button on the library details tab.
+To upload library well definitions and content information, use the "Upload" button on the library details tab.The upload format can be as an SD file if small molecule structure information (mol file) is to be included; otherwise content can be uploaded using an Excel file (.xlsx). Comments can be added during the upload to include information regarding the loading session. For all wells to be uploaded, required fields are plate_number, well_name, library_well_type (experimental, dmso, empty, library_control), and either molar_concentration (where 0.01 = 10mM) or mg_ml_concentration. Concentration values are only permitted for wells with library_well_type = "experimental".
 
-See [Library File Formats](library-file-formats.html) for further details on this process.
+After selecting the "Upload" button and setting the file to be used for upload, there is an option to set undefined library wells to "empty". If not selected all wells that have not been defined will remain in that state. If checked, all wells in the library that are not defined in the upload file will be set as empty. Attempts to load content for these wells will subsequently fail so only use this option if certain that the well type will not need to be changed. Updating of library well type is not possible using the UI or through data file upload.
+
+To add data for new records or existing records, select "Add columns" in the well view and check the desired columns to include. Download a file (using "Download for data interchange") to determine the correct column headers (if not known). Data can then be uploaded from the library details view. For existing records, plate_number and well_name (or just well_id) are necessary to link the data to the appropriate wells. Note that for any fields left blank in the loading file, the result will be null values in the corresponding well records. Any columns that are not being used in the loading file should thus be removed, unless the intent is to remove values in that column for all wells in the loading file.
+
+See [Library File Formats](library-file-formats.html) for more information..
 
 ## Create a library copy
 

@@ -20,19 +20,20 @@ To create a **Cherry Pick Request** select the "Cherry picks" tab on the screen 
 
 ## General setup
 
+* Date requested and requested by (defined list based on screen PI, lead screener, and collaborators)
 * Volume requested and approved and the staff member approving the request
-  * the **Approved by** drop down list is populated by all users identified as **staff**.
-* Keep source cherry pick plates together
-* Random plate well layout
-* Wells to leave empty
-* Assay protocol
+the Approved by drop down list is populated by all users identified as staff.
+* Keep source cherry pick plates together - initially set as "True", which keeps all wells from a source plate on the same cherry pick plate
+* Random plate well layout - initally set as "False", and ompounds will be arrayed from low to high well_id starting at the first available well at the top and moving down columns
+* Wells to leave empty - use the well picker visual tool to modify the plate format from the default outer two rows and columns left empty
+* Assay protocol - used to indicate whether cherry pick will repeat the primary screen assay or follow a new protocol
 
 ## Screener Cherry Picks
 
-Based on analysis of the primary screen, the experimentalist (the "screener") may identify specific wells as significant. These wells are entered on the **Screener Cherry Picks** tab entry form. 
-* Screensaver will show the plate and well information for the for the requested wells - be sure to verify that the number of wells located matches the number of wells that were entered in the search.
-  * If the search was unsuccessful, select **Delete screener cherry picks** and try again
-* Other reagents
+Based on analysis of the primary screen, the experimentalist (the "screener") may identify specific wells as potential positives. These wells are entered on the **Screener Cherry Picks** tab entry form. 
+
+* Screensaver will show the plate and well information for the for the requested wells - be sure to verify that the number of wells located matches the number of wells that were entered in the search. If wells need to be changed, check show "Other Reagents" and change the selected wells. This may be necessary, for example, if requested wells in multi-concentration libraries are not 10mM.
+  * If the search was unsuccessful, select Delete screener cherry picks and try again. This may be necessary when invalid wells have been input (non-experimental library wells, duplicates, or invalid well names) and a corrected list needs to be submitted.
 
 ## Lab Cherry Picks
 

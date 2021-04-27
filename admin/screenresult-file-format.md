@@ -17,11 +17,7 @@ The Screensaver API supports the upload of experiment result data formatted in E
 
 To load a screen result workbook, navigate to the screen, click the **Data** tab, then the **Screen Results** tab, and use the **Load data** option under the **Edit actions** menu.
 
-A single screen result identifies one measurement data point. Each data point is identified by a **data column** and a **well ID**. 
-
-* The **data_column** sheet contains the definitions of the measurement data colums that will be uploaded.
-* The **data** sheets contain the result data identified by the plate and well ID and the data column names.
-  * All sheets after the *data column* sheet will be read as data sheets (*except for the special sheet named "reference"*).
+After the initial data loading, data column definitions can be viewed within the "Data Columns" tab in the data view. Details on loading failures can be viewed by clidking on Job: #.
 
 ## Getting started with a template file
 
@@ -30,6 +26,17 @@ The Screensaver API will generate a "screen result template" file that is a vali
 * Mock data for each of the mock columns.
 
 ## Data Columns worksheet
+
+The Excel file for result loading has 3 worksheets:
+
+"screen": indicates the facility_id (screen #)
+
+"data_column": The worksheet where data columns are defined. Column name, title, data type, decimal places (for non-integer numeric), read-out type (for raw data), and how derived (for result values calculated from raw data) are defined here. "Name" is a shortened, lower case version of the title, and used for defining columns used for derived values. "Title" indicates the column headers that will be displayed in the data view for a screen.
+
+Screen positives are defined as either boolean_positive_indicator (with positive = TRUE) or partition_positive_indicator (with positive either S, M, or W). These are the wells that are counted for total positives in the positives summary.
+
+
+
 
 Each of the columns of data on the data worksheets are defined in the data columns worksheet.
 
@@ -78,6 +85,10 @@ The **assay_readout_type** defines the readout technology used to measure the da
 Any worksheet after the **data_column** worksheet will be read as a worksheet containing screen result data (*except for the special "reference" worksheet*).
 
 Each data worksheet has 4 mandatory columns:
+
+The first two columns (plate_number, well_name) must be specified for every result record. Records with duplicate plate_number / well_name will result in a loading failure and must be corrected. The assay_control_well_type column should only values for wells that are assay controls (N, P, or O). Specific well columns can be excluded based on screener input from the annotated result file in the "exclude" column by using the "name" headers defined in the data column worksheet.
+
+Subsequent columns are for result data defined in the data columns worksheet. Columns that are not defined will not display after loading. Note that data columns must use the "name" header.
 
 | *Column* | *Column label* | *Description* | *Value* |
 |---|---|---|---|
