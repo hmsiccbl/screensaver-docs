@@ -8,7 +8,7 @@ The Screensaver test suite requires a PostgreSQL database instance; this test da
 
 Before the tests are run, the application **metadata** must be initialized. This step is built in to the test suite `setupModule` function and can be optionally turned on with the `--reinit_metahash` flag. 
 * `--reinit_metahash` should be used for the initial setup of the test database, or whenever the application metadata have been changed.
-* See [Bootstrapping metadata](installation.html#bootstrapping-metadata-and-application-data) for more information.
+* See [Bootstrapping metadata](setup/server.html#bootstrapping-metadata) for more information.
 
 ``` bash
 # use the --reinit_metahash flag for the initial run

@@ -11,6 +11,19 @@ has_children: true
 {:toc}
 ---
 
+# Running SQL scripts and cache clearing
+
+The Screensaver server **caches the result of certain requests** to enhance the performance of the web application. When identical subsequent requests are received, Screensaver will serve the response from the cache instead of querying the database again. 
+
+Screensaver manages the clearing of this cache as a part of data update processes performed through the API. This cache is persistent; caching entries are stored in the database, so the cache will be available after the server is restarted, and the same cache is available to all server instances.
+
+**If data updates are performed directly in SQL, the cache will not be cleared**, and the updates will not be shown for requests made through the API. To fix this, **the cache must be cleared manually after SQL updates**.
+
+## Manually clearing the API cache:
+* Log in to the Screensaver web application
+* Visit the URL (e.g.): 
+  * <https://screensaver.med.harvard.edu/reports/api/v1/resource/clear_all_caches>
+  * this URL has the form `https://<server_name>/reports/api/v1/resource/clear_all_caches`
 
 # ICCB-L Screener Data Sharing Rules
 
