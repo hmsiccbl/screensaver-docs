@@ -13,9 +13,13 @@ has_children: true
 
 # Screens
 
-A screen tracks the progress of a screening assay, including a description of its biological significance, its experimental protocol, and additional data to support the administrative needs of the facility. After screening data is generated, this data may uploaded and associated with the screen record.
+The **Screen** view is the central location for tracking the progress of a high throughput screening assay project. The different tabs of the Screen view show the details of the screening project, including a description of its biological significance, its experimental protocol, and additional data to support the administrative needs of the facility. 
+* The **Screening summary** view keeps track of **Library screening visits** where the library plate copies screened, replicates created, volumes used, and facility resources required are tracked. 
+* The **Data** view provides the interface to upload screening data, and also provides reporting capabilities that can be used to investigate the data and do cross-screen comparisons. 
+* The **Cherry Picks** view keeps track of **Cherry Pick Request** follow up assays, providing query tools to locate library copies having the requested reagents and track volumes used a the well level.
+* The **Activities** view keeps track of all activities performed for the Screen, including both the screening visits and service activities performed.
 
-A study is similar to a screen, except that the reagents and the data associated with the study are based on publications or other research data and not on a screening assay performed at the facility. 
+A **Study** is similar to a screen, except that the reagents and the data associated with the study are based on publications or other research data and not on a screening assay performed at the facility. 
 
 ## Create a new screen
 
@@ -64,7 +68,7 @@ see [Raw Data Transformer](raw-data-transformer.html) for details.
 
 When anaylizing the screen results for an experimental assay, specific reagents may be identified as significant and selected for follow-up assays. "Cherry picking" is term used for this selection process.
 
-To create a "cherry pick request", select the "Cherry picks" tab on the screen page, and then use the "add" button.
+To create a **Cherry Pick Request**, select the "Cherry picks" tab on the screen page, and then use the "add" button.
 
 For details on the cherry pick request process, see [Cherry Pick Request](cherry-pick-request.html)
 
@@ -72,8 +76,18 @@ For details on the cherry pick request process, see [Cherry Pick Request](cherry
 
 A **Study** is similar to a **Screen** in that it is used to associate data with reagents by well in the Screensaver libraries. 
 
-The "Add study" button is located at the bottom of the left menu panel. In "Study Details", "Library Screen Type", "Lab Name", and "Study Type" have defined values for selection. The "Study ID" should be created by adding 1 to the existing study with the highest number in the (at ICCB-L, the "100 000" range of ID values are used for normal studies, and the "200 000" range of ID values are reserved for automatically generated studies). "Title" and "Summary" are free text, required fields.Title, Lab Name, and Summary can be edited after study creation.
+The "Add study" button is located at the bottom of the left menu panel. 
 
-Following creation of a study, data can be uploaded using an Excel (.xlsx) in the same format as loading screen results. This is done using the "Load data" button in the Data section. Required fields are "plate_number" and "well_name". One or more data columns are then defined that will display the study data
+In "Study Details"
+* The "Study ID" should be created by adding 1 to the existing study with the highest number.
+  * at ICCB-L, the "100,000" range of ID values are used for normal studies, and the "200,000" range of ID values are reserved for automatically generated studies. 
+  * The Study ID may not be changed after creation.
+* "Title" and "Summary" are free text, required fields
+  * Title, Lab Name, and Summary can be edited after study creation.
+* "Library Screen Type", "Lab Name", and "Study Type" have defined values for selection. 
+
+Following creation of a study, data can be uploaded using an Excel (.xlsx) in the same format as loading screen results. This is done using the "Load data" button in the Data section. 
+* Required fields are "plate_number" and "well_name". 
+* One or more data columns are then defined that will display the study data
 
 See [Screen Result File Format](screenresult-file-format.html) for more details on this process.
