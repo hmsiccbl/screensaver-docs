@@ -6,10 +6,11 @@ has_children: true
 ---
 
 The Screensaver administrative interface manages:
-* Administrative User accounts, User Groups, and Permissions
-* Experimenatalist User accounts, Data sharing rules, and Service activities
-* Library collections of reagents stored in plates or barcoded tubes  
-* All data associated with the high throughput Screen including:
+* Administrative User accounts
+* "Screener" accounts: the principal investigators, lead screeners, and other researchers involved in the screening projects
+* Data sharing rules, and Service activities
+* Library collections of reagents stored in plates or in barcoded tubes  
+* Screening projects, including:
   * Library screening visits 
   * Detailed volume tracking of reagent use
   * Screening data sets

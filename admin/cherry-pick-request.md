@@ -25,7 +25,7 @@ To create a **Cherry Pick Request** select the "Cherry picks" tab on the screen 
 * "Keep source cherry pick plates together" 
   * if "true", Screensaver will leave blank wells on the destination plate if necessary to keep all of the sourced wells from a copy plate together, 
   * if "false", then Screensaver will leave no blank wells wells on the destination plates and may split source wells from a source copy plate onto two destination plates (this may make lab automation harder because source plates will have to be loaded twice). 
-* Random plate well layout
+* "Random plate well layout"
   * if "true", compounds will be arrayed in random order on the destination plates
   * if "false", compounds will be arrayed from low to high well_id starting at the first available well at the top and moving down columns.
   * Note that this setting has no effect on the "Keep source cherry pick plates together" setting.
@@ -49,12 +49,14 @@ Based on analysis of the primary screen, the experimentalist (the "screener") ma
 
 Once the **Screener cherry picks** are selected and finalized, suitable **copy wells** that have sufficient volume must be located. When a suitable **copy well** is chosen, this copy well is referred to as a **Lab cherry pick**.
 
-Screensaver will search for lab cherry picks using the following rules:
+Screensaver will first search for lab cherry picks from the following types of plates:
 * Library copy type: "Cherry Pick Source Plates"
 * Library copy plate status: "Active"
 * Volume for the well is greater than the minimum allowed vol + requested volume
   * For small molecule libraries, the minimum volume is 6.9 uL
   * For functional genomic libraries, the minimum volume is 0 uL
+
+If the system cannot locate a copy well for a screener cherry pick from these sources, then the screener cherry pick will be listed as **"unfulfilled"** in the lab cherry pick view - resolving these unfulfilled picks is detailed in the process below.
 
 Lab Cherry Pick selection process
 
@@ -69,18 +71,22 @@ Lab Cherry Pick selection process
   * Alternate "retired" "Library Screening Plate" copies will be shown, staff may then select from these and save the selections.
   * After selecting, these manually selected picks may be shown using the show "Manually selected" option.
 
+**Note about volumes available: Lab cherry picks are selected using the currently available volumes; volumes are not subtracted until the "reserve" step, below**
+* For this reason, if multiple cherry picks are in process for the same wells simultaneously, then the actual volume available may change before the picks are reserved. Screening staff should take care when provisioning multiple cherry pick requests with overlapping picks.
+
 ## Reserving selections and mapping to plates
 
-Once all unfulfilled screener cherry picks have been resolved, the lab cherry picks can be "reserved" by the system and then the destination cherry pick assay plate layouts can be generated.
+Once all unfulfilled screener cherry picks have been resolved, the lab cherry picks can be "reserved" by the system and mapped to destination a cherry pick assay plate layouts.
 * Once a pick is reserved, the volume removal will be recorded to the system and the a freeze/thaw record will be created for the library copy plate.
+* See [General setup](#general-setup) for information about how the "Keep source cherry pick plates together" and "Random plate well layout" settings affect how lab cherry picks are mapped to assay plates.
 
 To reserve, select the "Reserve selections and map to plates" option.
 
 ## Undoing reservations and lab cherry pick selections.
 
 After volumes have been reserved, it is possible to undo the volume depletion and the freeze/thaw record, using the "Cancel reservation and delete plating assignments" button.
-* Note that once a reservation is cancelled, there will be no record of the plate layout that was generated. Therefore, this option may not be used to swap one lab cherry pick selection for another, because the new plate layout may not match the old plate layout.
-* For this reason, it is important to verify the lab cherry pick selections before reserving them in the system.
+* Note that once a reservation is cancelled, there will be no record of the plate layout that was generated. Therefore, this option may not be used to swap one lab cherry pick copy selection for another, because the new plate layout will be generated again and will not match the old plate layout.
+* For this reason, it is important to verify the lab cherry pick copy selections before reserving them in the system.
   * This is relevant if the recorded volumes in the system are inaccurate and must be visually verified. 
 
 ## Cherry Pick Plates (follow-up assay plates)

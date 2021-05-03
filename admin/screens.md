@@ -27,6 +27,16 @@ To create a screen, use the "Add screen" button on the bottom of the left panel.
 
 When a new screen is created, it is assigned the next available **Screen Facility ID**.
 
+Important fields:
+* **Principal Investigator** the lab head for the lab sponsoring this screen
+* **Lead Screener** the researcher conducting this screen
+* **Collaborators** other researchers associated with this screen
+* **Status** All screens begin with the "accepted" status
+* **Comments** visible only to staff
+* **Data sharing level** All screens must have a **Data sharing level** assigned. See [Data sharing rules](../reference.html#iccb-l-screener-data-sharing-rules) for more information.
+
+* Before data are deposited, screens will only be visible to Screen members (the Principal investigator, lead screener, or collaborators).
+
 ## Library screening visits
 
 When screens are conducted at the facility, the plates of one or more library copies are used to produce the assay plates used for screening. The usage of library copy plates is tracked in Screensaver by adding a new **Library Screening activity**. 

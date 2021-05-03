@@ -11,8 +11,6 @@ grand_parent: Administration
 {:toc}
 ---
 
-# Screen Result File Format
-
 The Screensaver API supports the upload of experiment result data formatted in Excel workbooks. 
 
 To load a screen result workbook, navigate to the screen, click the **Data** tab, then the **Screen Results** tab, and use the **Load data** option under the **Edit actions** menu.
@@ -25,18 +23,14 @@ The Screensaver API will generate a "screen result template" file that is a vali
 * Mock data columns for each type of assay_data_type that can be recorded.
 * Mock data for each of the mock columns.
 
-## Data Columns worksheet
+## Screen Result File Format
 
 The Excel file for result loading has 3 worksheets:
+* "screen": indicates the facility_id (screen #)
+* "data_column": The worksheet where data columns are defined. 
+* "data": all sheets after the "data_column" sheet will be read in as data sheets.
 
-"screen": indicates the facility_id (screen #)
-
-"data_column": The worksheet where data columns are defined. Column name, title, data type, decimal places (for non-integer numeric), read-out type (for raw data), and how derived (for result values calculated from raw data) are defined here. "Name" is a shortened, lower case version of the title, and used for defining columns used for derived values. "Title" indicates the column headers that will be displayed in the data view for a screen.
-
-Screen positives are defined as either boolean_positive_indicator (with positive = TRUE) or partition_positive_indicator (with positive either S, M, or W). These are the wells that are counted for total positives in the positives summary.
-
-
-
+## Data Columns worksheet
 
 Each of the columns of data on the data worksheets are defined in the data columns worksheet.
 
@@ -48,9 +42,9 @@ plate reader readout types (e.g. flouresence, luminescence, etc.), and/or
 multiple replicates, and/or plate reads made at multiple time points, then
 each combination will be represented by its own data column.
 
-Each data column is defined by the following fields:
+Data Column fields:
 
-* **name** - the name of the column that will be used on the data worksheets: should contain only the letters a-z and the underscore "_" character,
+* **name** - the name of the column that will be used on the data worksheets: should contain only the letters a-z and the underscore "_" character. 
 * **title** - the title for the data column that will be displayed in the Web application, may contain any character or spaces,
 * **assay_data_type** - the type of the data being entered in this column, see [assay_data_type](#assay_data_type)
 * **decimal_places** - (needed for decimal values only)
@@ -65,18 +59,23 @@ Each data column is defined by the following fields:
 * **screen_facility_id** - (optional) - if a value other than the screen facility ID being loaded is entered, then this column is ignored
 * **ordinal** - (optional) - if entered, this value overrides the order in which the columns are listed
 
-## assay_data_type
+### assay_data_type
 
 The **assay_data_type** defines the type of data that are allowed in the data column on the data worksheets:
 * **string** - any valid text may be entered 
 * **integer** - integer values only
 * **decimal** - any numerical value; to be represented with fixed precision (see **decimal_places**) 
 * **boolean** - a binary measurement; ("true", "TRUE", or "1" represent a true value), 
+
+Screen positives columns:
+
+If the assay_data_type is a **positives indicator**, then "positive" values in this column mark the result as a positive hit, and are counted for total positives in the positives summary.
+
 * **boolean_positive_indicator** - a true value indicates that the data point represents a positive determination,
 * **partition_positive_indicator** - one of: "s" - (Strong), "m" - (Medium), "w" - (Weak), or "np" - (Not Positive); blank values are interpreted as not positive,
 * **confirmed_positive_indicator** - one of: "cp" - (Confirmed positive), "fp" - (Positive determined from a false value), "i" - (Inconclusive), or "np" (Not positive); blank values are interpreted as not positive.
 
-## assay_readout_type
+### assay_readout_type
 
 The **assay_readout_type** defines the readout technology used to measure the data values for this column. See the generated [screen result template](#getting-started-with-a-template-file).
 
