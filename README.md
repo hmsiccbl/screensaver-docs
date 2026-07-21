@@ -2,5 +2,5 @@
 
 
 #Building: 
-`bundle exec jekyll serve --watch --config _config.local.yml` 
-`bundle exec jekyll serve --watch --config _config.local.yml --port 4100`
+`bundle exec jekyll serve --watch --config _config.yml,_config.local.yml` 
+`bundle exec jekyll serve --watch --config _config.yml,_config.local.yml --port 4100`

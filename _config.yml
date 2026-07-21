@@ -1,36 +1,47 @@
-title: Screensaver Documentation 
+title: Screensaver Documentation
 email: sean_erickson@hms.harvard.edu
 description: "Screensaver HTS LIMS: Open source software for high throughput screening"
-baseurl: "/screensaver-docs" 
+baseurl: "/screensaver-docs"
 url: "https://hmsiccbl.github.io"
 
 aux_links:
   "Screensaver on GitHub":
-    - "//github.com/hmsiccbl/screensaver"
-
+    - "https://github.com/hmsiccbl/screensaver"   # added explicit https:// — protocol-relative "//" urls are outdated
 
 back_to_top: true
 back_to_top_text: "Back to top"
-
 footer_content: "&copy; 2021 <a href=\"https://iccb.med.harvard.edu/\">ICCB-Longwood</a>. Distributed by an <a href=\"\">MIT license.</a>"
 
 last_edit_timestamp: true
-last_edit_time_format: "%b %e %Y" # format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
-
+last_edit_time_format: "%b %e %Y"
 
 # Build settings
-
 search_enabled: true
 heading_anchors: true
 
-#theme: just-the-docs 
-remote_theme: pmarsceill/just-the-docs
+theme: just-the-docs   # gem-based, no more remote_theme now that you control the Actions build
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-feed
+  # jekyll-sitemap is auto-enabled by just-the-docs itself when using recent versions
 
+exclude:
+  - node_modules/
+  - "*.gemspec"
+  - "*.gem"
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - script/
+  - LICENSE.txt
+  - lib/
+  - bin/
+  - README.md
+  - Rakefile
+  - vendor/   # bundler installs here in some CI setups — good to exclude
 
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 compress_html:
   clippings: all
   comments: all
@@ -39,4 +50,6 @@ compress_html:
   blanklines: false
   profile: false
 
+sass:
+     quiet_deps: true
 
