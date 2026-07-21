@@ -9,11 +9,11 @@ nav_order: 1
 
 ## Server
 
-- Python: 3.8
-- PostgreSQL: Tested with versions: 9.6, 10
+- Python: 13+
+- PostgreSQL: Tested with versions: 17
 
 ## Developer requirements
 
 The web application build has been tested with the following versions:
-- Node: 12.21.0
-- NPM: 6.14
+- Node: ~25
+- NPM: ~12
