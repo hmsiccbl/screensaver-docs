@@ -10,6 +10,13 @@ nav_order: 6
 {:toc}
 ---
 
+# Demo
+
+(Available soon) A fully functional Docker image is availabile at <TODO-Provide-URL>.
+
+(Available soon) Demo instructions.
+
+
 
 # Building for development
 
@@ -24,7 +31,7 @@ The client JavaScript application is built using NPM and may be deployed to the 
 `$ npm install`
 
 ## Building the client
-This has been tested with node v12.13.0, npm v6.13.0.
+This has been tested with node ~25, npm ~12.
 
 ```
 cd reports/static

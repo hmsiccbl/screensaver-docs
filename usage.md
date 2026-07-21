@@ -18,56 +18,9 @@ nav_order: 5
 
 The first step in interaction with the API is authenticating the user.
 
-Screensaver authenticates users through a form based login that acquires a [secure HTTP session](https://docs.djangoproject.com/en/3.1/topics/http/sessions/).  
+Screensaver supports for API-Key (basic auth) authentication.
+To use, navigate to a Staff user account and use the API-Key tab to generate new API-keys for the user.
 
-Specifically, the client must get the login form provided by the URL `accounts/login`, and the client must post authentication criteria and a [CSRF token](https://docs.djangoproject.com/en/3.1/ref/csrf/) obtained from this form to the same URL (`accounts/login`).
-
-To facilitate this process, Screensaver provides the `reports.utils.django_requests.py` utility. This utility is a wrapper for the Python [requests](https://docs.python-requests.org/en/master/) package. This utility will acquire a secure HTTP session and will perform GET, PUT, POST, and DELETE operations using this session.  
-
-* see: [Django Authenication System](https://docs.djangoproject.com/en/3.1/topics/auth/default/)
-* see: [https://docs.djangoproject.com/en/3.1/ref/csrf/](https://docs.djangoproject.com/en/3.1/ref/csrf/)
-
-**Examples: using the `django_requests.py` utility**
-```bash
-
-# Show help
-PYTHONPATH=. python reports/utils/django_requests.py -h
-usage: django_requests.py [-h] [-u USERNAME] [-p PASSWORD] [-c CREDENTIAL_FILE] [-f FILE] -a {GET,POST,PUT,PATCH,DELETE} [--header HEADER] [-v]
-                          [--login_form LOGIN_FORM]
-                          url
-
-Utility to perform HTTP operations using a secure HTTP session, authentiated with the Screensaver server.
-
-positional arguments:
-  url                   the URL to connect to
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -u USERNAME, --username USERNAME
-  -p PASSWORD, --password PASSWORD
-  -c CREDENTIAL_FILE, --credential_file CREDENTIAL_FILE
-                        credential file containing the username:password for api authentication
-  -f FILE, --file FILE  file to POST, PUT, or PATCH
-  -a {GET,POST,PUT,PATCH,DELETE}, --action {GET,POST,PUT,PATCH,DELETE}
-                        HTTP action
-  --header HEADER       HTTP header (may be repeated)
-  -v, --verbose         Increase verbosity (specify multiple times for more)
-  --login_form LOGIN_FORM
-                        default: '/accounts/login/'
-
-
-# GET
-PYTHONPATH=. python reports/utils/django_requests.py \
-  -u sde -a GET https://screensaver.med.harvard.edu/reports/api/v1/job?state=completed
-
-# PATCH
-PYTHONPATH=. python reports/utils/django_requests.py \
-  -u sde -a PATCH https://screensaver.med.harvard.edu/reports/api/v1/field/ \
-  --header "Content-Type: text/csv" \
-  --header "Accept: application/json" \
-  -f db/static/api_init/metahash_fields_useragreement.csv -v
-
-```
 ## Upload operations
 
 Uploading of data can be used to either create new records, or to update existing records.
@@ -202,30 +155,18 @@ Resource, Field and Vocabulary **metadata** are used to specify runtime informat
 
 ## Example metadata operations
 
+Note: this operation may be performed directly in the web application, this example is provided for demonstration only.
+
 A note about the [HTTP request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) (aka "action"): 
 * for most operations, the `PATCH` action will be specified; as this will perform an update to the entities posted for the resource endpoint,
 * care should be taken when specifing the `PUT` action, as this will **replace** the complete set of entities for a resource endpoint.
 
 Update the field definitions for a the `"screen" (/db/api/v1/screen)` resource:
 ``` bash
-PYTHONPATH=. python reports/utils/django_requests.py \
-	-u <admin_user> \
-	-a PATCH https://screensaver.med.harvard.edu/reports/api/v1/field/ \
-	--header "Content-Type: text/csv" --header "Accept: application/json" \
-	-f db/static/api_init/metahash_fields_screen.csv
-```
-
-Update vocabulary definitions:
-``` bash
-PYTHONPATH=. python reports/utils/django_requests.py \
-  -u <admin_user> \
-  -a PATCH https://screensaver.med.harvard.edu/reports/api/v1/vocabulary/ \
-  --header "Content-Type: text/csv" --header "Accept: application/json" \
-  -f reports/static/api_init/vocabulary_data.csv
-```
-
-
-
+curl -v  --dump-header - -H "Content-Type: text/csv" -H "Accept: application/json" --user <staff_user> \
+    -X PATCH https://screensaver.med.harvard.edu/reports/api/v1/field/ \
+    --data-binary @db/static/api_init/metahash_fields_screen.csv
+    
 
 # Screener User Manual
 
