@@ -18,8 +18,7 @@ Screensaver supports the storage and comparison of screening data sets, as well 
 ## Resources
 * [Screensaver Documentation](https://hmsiccbl.github.io/screensaver-docs/) - this document
 * [ICCB-Longwood Screening Facility](https://iccb.med.harvard.edu/)
-* [Screensaver User Manual](https://iccb.med.harvard.edu/files/iccb/files/ss2_usermanual_12042018.pdf) - for screeners utilizing the Screensaver web application
-* [Screensaver Demo](https://demo.screensaver.med.harvard.edu/)
+* [Screensaver User Manual](https://iccb.med.harvard.edu/file_url/507) - for screeners utilizing the Screensaver web application
 * [GitHub Project Homepage](https://github.com/hmsiccbl/screensaver)
 * [Screensaver Feedback](mailto:screensaver-feedback@hms.harvard.edu)
 

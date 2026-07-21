@@ -12,7 +12,7 @@ parent: Setup
 
 # Install Python using Conda
 
-Python 3.8 should be installed using a separate environment. The [Miniconda](https://docs.conda.io/en/latest/miniconda.html) version of the Conda package managment system is recommended.
+Python 13+ should be installed using a separate environment. The [Miniconda](https://docs.conda.io/en/latest/miniconda.html) version of the Conda package managment system is recommended.
 
 Once Miniconda is installed, create a separate "screensaver" environment
 
@@ -23,7 +23,7 @@ conda create -p <installation_dir>/miniconda/screensaver python=3.8
 conda activate <base directory>/miniconda/screensaver
 ```
 
-# Install PostgresSql 9.6
+# Install PostgresSql 17
 
 Create a new PostgreSQL user and database instance using the [createuser](https://www.postgresql.org/docs/9.6/app-createuser.html) and [createdb](https://www.postgresql.org/docs/9.6/app-createdb.html) commands.
 
